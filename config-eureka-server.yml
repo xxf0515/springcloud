@@ -1,0 +1,40 @@
+server:
+  port: 7001
+eureka:
+  instance:
+    hostname: www.eureka7001.com
+    instance-id: eureka-server-7001
+  client:
+    serviceUrl:
+      defaultZone: http://www.eureka7001.com:7001/eureka/
+spring:
+  application:
+    name: config-eureka-server
+---
+server:
+  port: 7002
+eureka:
+  instance:
+    hostname: www.eureka7002.com
+    instance-id: eureka-server-7002
+  client:
+    serviceUrl:
+      defaultZone: http://www.eureka7002.com:7002/eureka/
+spring:
+  profiles: dev
+  application:
+    name: config-eureka-server
+---
+server:
+  port: 7003
+eureka:
+  instance:
+    hostname: www.eureka7003.com
+    instance-id: eureka-server-7003
+  client:
+    serviceUrl:
+      defaultZone: http://www.eureka7003.com:7003/eureka/
+spring:
+  profiles: test
+  application:
+    name: config-eureka-server
