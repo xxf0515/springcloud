@@ -1,9 +1,28 @@
-spring:
-  profiles:
-    actvie: dev
----
 server:
   port: 8001
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.jiuyunedu.sky.bean
+  configuration:
+    cache-enabled: true
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/cloud01?useSSL=false&characterEncoding=utf-8&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: springcloudservice-provider-department
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://www.eureka7001.com:7001/eureka/
+  instance:
+    instance-id: springcloudservice-provider-department-8001
+    prefer-ip-address: true
+---
+server:
+  port: 8002
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.jiuyunedu.sky.bean
@@ -21,31 +40,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://www.eureka7001.com:7001/eureka/, http://www.eureka7002.com:7002/eureka/, http://www.eureka7003.com:7003/eureka/
+      defaultZone: http://www.eureka7001.com:7001/eureka/
   instance:
-    instance-id: springcloudservice-provider-department-8001
-    prefer-ip-address: true
----
-server:
-  port: 8004
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.jiuyunedu.sky.bean
-  configuration:
-    cache-enabled: true
-spring:
-  profiles: test
-  datasource:
-    username: root
-    password: root
-    url: jdbc:mysql://localhost:3306/cloud01?useSSL=false&characterEncoding=utf-8&serverTimezone=UTC
-    driver-class-name: com.mysql.jdbc.Driver
-  application:
-    name: springcloudservice-provider-department
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://www.eureka7001.com:7001/eureka/, http://www.eureka7002.com:7002/eureka/, http://www.eureka7003.com:7003/eureka/
-  instance:
-    instance-id: springcloudservice-provider-department-8001
+    instance-id: springcloudservice-provider-department-8002
     prefer-ip-address: true
